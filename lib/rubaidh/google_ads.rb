@@ -21,6 +21,6 @@ module Rubaidh
     }
     
     mattr_accessor :environments
-    @@environments = ['development', 'production']
+    @@environments = ['production']
   end
 end
