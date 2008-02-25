@@ -9,9 +9,11 @@ module Rubaidh
         # Spit out a google ad with the appropriate settings pulled from
         # our configuration
         def google_ad(format = :default)
+          return unless GoogleAds.enabled?
+          
           options = Rubaidh::GoogleAds.defaults.merge(Rubaidh::GoogleAds.ad_formats[format])
           js = javascript_tag <<-JS
-            google_ad_client = "pub-8140540546285689";
+            google_ad_client = "#{options[:client]}";
             google_ad_width = #{options[:width]};
             google_ad_height = #{options[:height]};
             google_ad_format = "#{options[:width]}x#{options[:height]}_as";

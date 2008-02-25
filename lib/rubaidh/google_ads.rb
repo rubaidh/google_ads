@@ -22,5 +22,9 @@ module Rubaidh
     
     mattr_accessor :environments
     @@environments = ['production']
+    
+    def self.enabled?
+      environments.include?(RAILS_ENV)
+    end
   end
 end
