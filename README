@@ -31,10 +31,10 @@ small_square = {
 # Customise each different type of ad, specifying the ad_slot for each advert
 Rubaidh::GoogleAds.ad_formats.merge!({
   :default_leaderboard => leaderboard.merge({
-    :ad_slot => '0665846831'
+    :ad_slot => 'xxxxxxxxxx'
   }),
   :default_square => small_square.merge({
-    :ad_slot => '0997622724'
+    :ad_slot => 'xxxxxxxxxx'
   })
 })
 
