@@ -1,13 +1,52 @@
 GoogleAds
 =========
 
-Introduction goes here.
+google_ads is a simple plugin to help adding lots of google ads website and keep them maintained in one central location.
 
+Updated to work with rails 2.3 and the latest google adsense javascript.
 
 Example
 =======
 
-Example goes here.
+Install the plugin.
+
+In config/initializers/ create a new initializer (I call it google_ads.rb) and you'll want to have something like the following in there:
+
+Rubaidh::GoogleAds.defaults.merge!({
+  # Google Adsense Identifier, looks something like 'pub-0123456789012345'
+  :client => 'pub-xxxxxxxxxxxxxxxxx'
+})
+
+# setup some basic advert sizes
+leaderboard = {
+  :width => 728,
+  :height => 90,
+}
+
+small_square = {
+  :width => 200,
+  :height => 200
+}
+
+# Customise each different type of ad, specifying the ad_slot for each advert
+Rubaidh::GoogleAds.ad_formats.merge!({
+  :default_leaderboard => leaderboard.merge({
+    :ad_slot => '0665846831'
+  }),
+  :default_square => small_square.merge({
+    :ad_slot => '0997622724'
+  })
+})
+
+# Want adverts to be displayed in development environment?
+Rubaidh::GoogleAds.environments << 'development'
+
+#####
+
+And in the view, simply use:
+
+<%= google_ad(:default_leaderboard) %>
+<%= google_ad(:default_square) %>
 
 
 Copyright (c) 2007 [name of plugin creator], released under the MIT license
